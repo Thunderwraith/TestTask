@@ -1,0 +1,24 @@
+.file-uploader
+  display: flex
+  align-items: center
+  &--
+    &hidden
+      display: none
+    &fake-label
+      display: block
+      border: 1px solid $c-black
+      height: 54px
+      width: 83px
+      border-radius: 4px 0 0 4px
+      transition: .4s
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: center
+      &:hover
+        transition: .4s
+        background-color: $c-black
+        color: $c-white
+  .el-input
+    border-radius: 0 4px 4px 0
+    color: $c-light-grey

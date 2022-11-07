@@ -1,0 +1,38 @@
+@mixin mq-xs
+  @media (map-get($mq-queries-from-map, 'xs'))
+    @content
+
+@mixin mq-sm
+  @media (map-get($mq-queries-from-map, 'sm'))
+    @content
+
+@mixin mq-md
+  @media (map-get($mq-queries-from-map, 'md'))
+    @content
+
+@mixin mq-lg
+  @media (map-get($mq-queries-from-map, 'lg'))
+    @content
+
+@mixin mq-2lg
+  @media (map-get($mq-queries-from-map, '2lg'))
+    @content
+
+@mixin mq-xl
+  @media (map-get($mq-queries-from-map, 'xl'))
+    @content
+
+@mixin mq-adaptive($separator: '-', $with-initial: true)
+  @if $with-initial
+    @content
+
+  @each $size in $mq-size-order
+    &#{$separator}#{$size}
+      @media (map-get($mq-queries-from-map, $size))
+        @content
+
+=text-overflow
+  overflow: hidden
+  -ms-text-overflow: ellipsis
+  text-overflow: ellipsis
+  white-space: nowrap

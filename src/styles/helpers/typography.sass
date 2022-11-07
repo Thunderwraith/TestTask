@@ -1,0 +1,16 @@
+.text
+  &--
+    &color
+      &-
+        @each $key, $value in $colors-map
+          &#{$key}
+            color: #{$value}
+    &size
+      &-
+        @each $key, $value in $size-map
+          &#{$key}
+            font-size: #{$value}
+    &lh
+      &-
+        &lg
+          line-height: 40px

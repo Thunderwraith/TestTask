@@ -1,0 +1,66 @@
+$c-white: #FFFFFF;
+$c-black: #000000;
+$c-grey: #F8F8F8;
+$c-light-grey: #D0CFCF;
+$c-dark-grey: #B4B4B4;
+$c-yellow: #F4E041;
+$c-aqua: #00BDD3;
+
+$colors: (
+  'white': $c-white,
+  'black': $c-black,
+  'grey': $c-grey,
+  'light-grey': $c-light-grey,
+  'dark-grey': $c-dark-grey,
+  'yellow': $c-yellow,
+  'aqua': $c-aqua,
+);
+
+$colors-map: $colors;
+
+$sizes: (
+  'sm': 16px,
+  'xl': 40px,
+);
+
+$size-map: $sizes;
+
+$spaces: (
+  'none': 0,
+  'xs': 10px,
+  '2xs': 21px,
+  'sm': 32px,
+  'xl': 50px,
+  'xxl': 140px,
+);
+
+$spaces-map: $spaces;
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px,
+//   xxl: 1400px
+// );
+
+$grid-breakpoints: (
+  'xs': 0,
+  'sm': 360px,
+  'md': 768px,
+  'lg': 992px,
+  '2lg': 1024px,
+  'xl': 1170px,
+  'xxl': 1400px
+);
+
+$mq-size-order: 'xs' 'sm' 'md' 'lg' '2lg' 'xl' 'xxl';
+
+$mq-map: $grid-breakpoints;
+
+$mq-queries-from-map: ();
+
+@each $size, $value in $mq-map {
+  $mq-queries-from-map: map-merge(($size: unquote("min-width: #{$value}")), $mq-queries-from-map)
+}

@@ -1,0 +1,39 @@
+.radio-bar
+  margin-top: 25px
+  span
+    color: red
+
+.radio-wrapper
+  margin-top: 11px
+
+.el-radio
+  display: flex
+  align-items: center
+  margin-bottom: 7px
+  &--
+    &label
+      cursor: pointer
+    &hidden
+      display: none
+      &:checked ~ .el-radio--fake-radio
+        border: 1px solid $c-aqua
+        &:before
+          content: ''
+          width: 10px
+          height: 10px
+          background: $c-aqua
+          position: absolute
+          border-radius: 50%
+    &fake-radio
+      width: 20px
+      height: 20px
+      border: 1px solid $c-light-grey
+      border-radius: 50%
+      display: inline-block
+      margin-right: 12px
+      position: relative
+      display: flex
+      justify-content: center
+      align-items: center
+      &:before
+        content: ''

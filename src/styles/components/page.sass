@@ -1,0 +1,35 @@
+.intro
+  position: relative
+  &--
+    &bg
+      width: 100%
+      height: 500px
+      +mq-lg
+        height: 100%
+    &content
+      position: absolute
+      top: 52%
+      left: 50%
+      transform: translate(-52%, -50%)
+      text-align: center
+      width: 328px
+      +mq-md
+        width: 380px
+
+.card-section
+  padding: 0 16px
+  +mq-md
+    padding: 0 32px
+  +mq-2lg
+    padding: 0 60px
+  +mq-xl
+    padding: 0
+
+.card-section-row
+  --bs-gutter-y: 1.1rem
+  +mq-md
+    --bs-gutter-x: 0.999rem
+    --bs-gutter-y: 0.999rem
+  +mq-2lg
+    --bs-gutter-x: 1.875rem
+    --bs-gutter-y: 1.875rem

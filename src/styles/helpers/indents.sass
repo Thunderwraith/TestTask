@@ -1,0 +1,65 @@
+.pa
+  &--
+    &t
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              padding-top: #{$value}
+    &b
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              padding-bottom: #{$value}
+    &l
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              padding-left: #{$value}
+    &r
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              padding-right: #{$value}
+    &round
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              padding: #{$value}
+
+.ma
+  &--
+    &t
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              margin-top: #{$value}
+    &b
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              margin-bottom: #{$value}
+    &l
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              margin-left: #{$value}
+    &r
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              margin-right: #{$value}
+    &round
+      &-
+        @each $key, $value in $spaces-map
+          &#{$key}
+            +mq-adaptive
+              margin: #{$value}
