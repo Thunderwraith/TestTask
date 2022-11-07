@@ -2,6 +2,7 @@
 .user-card
   img.user-card--photo(
     :src='user.photo'
+    :alt='user.name'
   )
   p.user-card--data.text-center.pa--b-2xs {{ user.name }}
   p.user-card--data.text-center {{ user.position }}

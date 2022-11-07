@@ -8,6 +8,7 @@ header.header
         )
           img.logo(
             src='../public/img/logo.png'
+            alt='logo'
           )
       .col-auto.pa--l-none
         .btn.btn--default.ma--r-xs Users

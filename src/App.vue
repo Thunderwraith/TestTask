@@ -4,6 +4,7 @@ vue-header
   section.intro
     img.intro--bg(
       src='./public/img/bg.png'
+      alt='intro'
     )
     .intro--content
       p.text-center.text--color-white.text--size-xl.text--lh-lg Test assignment for front-end developer
