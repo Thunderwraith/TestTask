@@ -21,6 +21,9 @@ section.card-section.text-center
 
   export default {
     name: 'card-block',
+    props: {
+      skip: {},
+    },
     data() {
       return {
         users: [],
@@ -45,5 +48,11 @@ section.card-section.text-center
           })
       },
     },
+    watch: {
+      skip() {
+        this.link = ENDPOINTS.USERS
+        this.getUsers()
+      }
+    }
   }
 </script>

@@ -86,8 +86,8 @@ section.form-section.text-center
             token: sessionStorage.token
           }
         })
-          .then(res => {
-            console.log(res);
+          .then(() => {
+            this.$emit('form-success')
           })
       },
       getPosition() {
