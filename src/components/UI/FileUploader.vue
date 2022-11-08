@@ -19,7 +19,6 @@
     name: 'file-uploader',
     data() {
       return {
-        file: null,
         fileName: null,
       }
     },
@@ -27,12 +26,7 @@
       uploadSource(event) {
         const file = event.target.files[0]
         this.fileName = file.name
-        const reader = new FileReader()
-        reader.onload = e => {
-          this.file = e.target.result
-          this.$emit('transfer-file', this.file)
-        }
-        reader.readAsDataURL(file)
+        this.$emit('transfer-file', file)
       },
     },
   }

@@ -24,10 +24,10 @@ section.form-section.text-center
     radio-bar.text-start(
       name='position'
       :data='positions'
-      @radio-value="setForm($event, 'position_id')"
+      @radio-value="form.position_id = $event"
     )
     file-uploader.ma--t-xl(
-      @transfer-file="setForm($event, 'photo')"
+      @transfer-file="form.photo = $event"
     )
     button.btn.btn--inverse.ma--t-xl(
       type='submit'
@@ -83,7 +83,8 @@ section.form-section.text-center
       send() {
         this.$axios.post(ENDPOINTS.USERS, this.form, {
           headers: {
-            token: sessionStorage.token
+            token: sessionStorage.token,
+            'Content-Type': 'multipart/form-data',
           }
         })
           .then(() => {
@@ -95,9 +96,6 @@ section.form-section.text-center
           .then(({ data: { positions } }) => {
             this.positions = positions
           })
-      },
-      setForm(value, key) {
-        this.form[key] = value
       },
     },
   }
