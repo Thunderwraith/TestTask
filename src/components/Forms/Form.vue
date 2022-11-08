@@ -2,6 +2,7 @@
 section.form-section.text-center
   p.text--size-xl.text--lh-lg.pa--b-xl Working with POST request
   Form.request-form(
+    ref='form'
     @submit='send'
   )
     .row
@@ -10,7 +11,7 @@ section.form-section.text-center
         :key='index'
       )
         .input-wrapper.text-start
-          ErrorMessage(
+          ErrorMessage.validation-error(
             :name='item.name'
           )
           Field.el-input(
@@ -26,8 +27,14 @@ section.form-section.text-center
       :data='positions'
       @radio-value="form.position_id = $event"
     )
+      ErrorMessage.validation-error(
+        name='position_id'
+      )
     file-uploader.ma--t-xl(
       @transfer-file="form.photo = $event"
+    )
+    ErrorMessage.validation-error(
+      name='photo'
     )
     button.btn.btn--inverse.ma--t-xl(
       type='submit'
@@ -89,6 +96,12 @@ section.form-section.text-center
         })
           .then(() => {
             this.$emit('form-success')
+          })
+          .catch(errors => {
+            if(errors.response.status === 422) {
+              const { response: { data: { fails } } } = errors
+              this.$refs.form.setErrors(fails)
+            }
           })
       },
       getPosition() {

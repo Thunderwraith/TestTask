@@ -1,6 +1,7 @@
 <template lang="pug">
 .radio-bar
   p Select your position
+  slot
   .radio-wrapper
     .el-radio(
       v-for='item in data'
@@ -14,7 +15,9 @@
         @change="$emit('radio-value', value)"
         v-model='value'
       )
-      .el-radio--fake-radio
+      label.el-radio--fake-radio(
+        :for='item.id'
+      )
       label.el-radio--label(
         :for='item.id'
       ) {{ item.name }}
