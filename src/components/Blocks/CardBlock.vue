@@ -18,7 +18,6 @@ section.card-section.text-center
 <script>
 
   import { ENDPOINTS } from '../../requests/ENDPOINTS'
-  import moment from 'moment'
 
   export default {
     name: 'card-block',
