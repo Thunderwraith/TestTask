@@ -18,6 +18,7 @@ section.card-section.text-center
 <script>
 
   import { ENDPOINTS } from '../../requests/ENDPOINTS'
+  import moment from 'moment'
 
   export default {
     name: 'card-block',
@@ -43,6 +44,7 @@ section.card-section.text-center
         })
           .then(res => {
             const { data: { users, links } } = res
+            users.sort((a, b) => a.registration_timestamp > b.registration_timestamp ? 1 : -1)
             this.users = users
             this.link = links.next_url
           })
