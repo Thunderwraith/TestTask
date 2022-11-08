@@ -37,8 +37,9 @@ section.form-section.text-center
       name='photo'
     )
     button.btn.btn--inverse.ma--t-xl(
+      :disabled='isLoading'
       type='submit'
-    ) Sign up
+    ) {{ isLoading ? 'Sending...' : 'Sign up' }}
 </template>
 
 <script>
@@ -55,6 +56,7 @@ section.form-section.text-center
     },
     data() {
       return {
+        isLoading: false,
         positions: [],
         form: {
           name: null,
@@ -88,6 +90,7 @@ section.form-section.text-center
     },
     methods: {
       send() {
+        this.isLoading = true
         this.$axios.post(ENDPOINTS.USERS, this.form, {
           headers: {
             token: sessionStorage.token,
@@ -95,9 +98,11 @@ section.form-section.text-center
           }
         })
           .then(() => {
+            this.isLoading = false
             this.$emit('form-success')
           })
           .catch(errors => {
+            this.isLoading = false
             if(errors.response.status === 422) {
               const { response: { data: { fails } } } = errors
               this.$refs.form.setErrors(fails)
