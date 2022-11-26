@@ -3,6 +3,7 @@ import App from './App.vue'
 import axios from 'axios'
 import components from './components'
 import { defineRule } from 'vee-validate';
+import Notifications from '@kyvg/vue3-notification'
 
 import './styles/index.sass'
 
@@ -40,8 +41,10 @@ defineRule('phone', value => {
 
 const app = createApp(App)
 
+
 app.config.globalProperties.$axios = axios
 
+app.use(Notifications)
 app.use(components)
 
 app.mount('#app')

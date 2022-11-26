@@ -10,18 +10,15 @@ section.form-section.text-center
         v-for='item, index in fields'
         :key='index'
       )
-        .input-wrapper.text-start
-          ErrorMessage.validation-error(
-            :name='item.name'
-          )
-          Field.el-input(
-            :name='item.name'
-            :rules='item.rules'
-            :placeholder='item.placeholder'
-            :class="{'ma--b-xl' : index+1 < fields.length}"
-            v-model='form[item.name]'
-          )
-          p.input-wrapper--label.text-start {{ item.label }}
+        control-input.text-start(
+          :class="{'ma--b-xl' : index+1 < fields.length}"
+          :name='item.name'
+          :placeholder='item.placeholder'
+          :label='item.label'
+          :rules='item.rules'
+          :mask='item.mask'
+          v-model:value='form[item.name]'
+        )
     radio-bar.text-start(
       name='position'
       :data='positions'
@@ -79,8 +76,10 @@ section.form-section.text-center
           {
             name: 'phone',
             placeholder: 'Phone',
+            type: 'tel',
             label: '+38 (XXX) XXX - XX - XX',
-            rules: 'required|phone'
+            rules: 'required',
+            mask: '+38(###)###-##-##'
           }
         ],
       }
@@ -91,6 +90,7 @@ section.form-section.text-center
     methods: {
       send() {
         this.isLoading = true
+        this.form.phone = this.form.phone.replace(/[\s()-]/g, '')
         this.$axios.post(ENDPOINTS.USERS, this.form, {
           headers: {
             token: sessionStorage.token,
@@ -106,6 +106,15 @@ section.form-section.text-center
             if(errors.response.status === 422) {
               const { response: { data: { fails } } } = errors
               this.$refs.form.setErrors(fails)
+            }
+            if(errors.response.status === 409) {
+              const { response: { data: { message } } } = errors
+              this.$notify(
+                {
+                  text: message,
+                  type: 'warn',
+                }
+              )
             }
           })
       },

@@ -1,4 +1,5 @@
 <template lang='pug'>
+notifications
 vue-header
 .container
   section.intro
